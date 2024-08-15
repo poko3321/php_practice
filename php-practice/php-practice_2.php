@@ -22,9 +22,9 @@ foreach ($personalInfos as $x => $value){
 
 $ageList = [25, 30, 18];
 
-$personalInfos[0]["age"] = $ageList[0];
-$personalInfos[1]["age"] = $ageList[1];
-$personalInfos[2]["age"] = $ageList[2];
+foreach ($personalInfos as $index => &$info){
+    $info['age'] = $ageList[$index];
+}
 
 var_dump($personalInfos)
 
@@ -32,7 +32,7 @@ var_dump($personalInfos)
 
 // Q3 オブジェクト-1
 $bob = new Student("15","bob");
-echo '学籍番号' . $bob -> studentId . '番の生徒は' . $bob -> studentName . 'です。';
+echo '学籍番号' . $bob->studentId . '番の生徒は' . $bob->studentName . 'です。';
 
 
 // Q4 オブジェクト-2

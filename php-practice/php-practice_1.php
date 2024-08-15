@@ -19,15 +19,12 @@
     // Q4 条件分岐-1 if文
     $device = 'HM66が欲しい！';
 
-    if($device == 'windows'){
-        echo '使用OSは' . $device .'です。';
-    }
-    if($device == 'mac') {
-        echo '使用OSは' . $devide .'です。';
-    }
-    else {
+    if ($device == 'windows' || $device == 'mac') {
+        echo '使用OSは' . $device . 'です。';
+    } else {
         echo 'どちらでもありません。';
     }
+    
 
 
     // Q5 条件分岐-2 三項演算子
@@ -40,60 +37,91 @@
 
 
     // Q6 配列
-    $prefacture = ['tokyo','yokohama','gunma','saitama','tiba'];
+    $prefacture = ['東京','横浜','群馬','埼玉','千葉'];
     echo $prefacture[2]. 'と' . $prefacture[3] . 'は関東地方の都道府県です。';
 
 
     // Q7 連想配列-1
-    $kantou = ['東京途'=>'新宿区','横浜県'=>'横浜市','千葉県'=>'千葉市','埼玉県'=>'さいたま市','栃木県'=>'宇都宮市','群馬県'=>'前橋市','茨城県'=>'水戸市'];
-    foreach ($kantou as $yokohama){
-        echo $yokohama."\n";
+    $kantou = ['東京途'=>'新宿区',
+               '横浜県'=>'横浜市',
+               '千葉県'=>'千葉市',
+               '埼玉県'=>'さいたま市',
+               '栃木県'=>'宇都宮市',
+               '群馬県'=>'前橋市',
+               '茨城県'=>'水戸市'
+            ];
+    foreach ($kantou as $prefacture){
+        echo $prefacture."\n";
     }
 
 
     // Q8 連想配列-2
-    $kantou = ['東京途'=>'新宿区','横浜県'=>'横浜市','千葉県'=>'千葉市','埼玉県'=>'さいたま市','栃木県'=>'宇都宮市','群馬県'=>'前橋市','茨城県'=>'水戸市'];
-    foreach ($kantou as $yokohama => $popon){
-        if ($yokohama == '埼玉県'){
-            echo $yokohama . 'の県庁所在地は、' . $popon .'です。';
+    $kantou = ['東京途'=>'新宿区',
+               '横浜県'=>'横浜市',
+               '千葉県'=>'千葉市',
+               '埼玉県'=>'さいたま市',
+               '栃木県'=>'宇都宮市',
+               '群馬県'=>'前橋市',
+               '茨城県'=>'水戸市'
+            ];
+    foreach ($kantou as $prefacture => $kentyoushozaiti){
+        if ($prefacture == '埼玉県'){
+            echo $prefacture . 'の県庁所在地は、' . $kentyoushozaiti .'です。';
         }
     }
 
 
     // Q9 連想配列-3
-    $kantou = ['東京途'=>'新宿区','横浜県'=>'横浜市','千葉県'=>'千葉市','埼玉県'=>'さいたま市','栃木県'=>'宇都宮市','群馬県'=>'前橋市','茨城県'=>'水戸市','北海道'=>'札幌市','岩手県'=>'盛岡市'];
-    foreach ($kantou as $yokohama => $popon){
-        if ($yokohama == '東京途'||$yokohama == '埼玉県'||$yokohama == '横浜県'||$yokohama == '千葉県'||$yokohama == '栃木県'||$yokohama == '群馬県'||$yokohama == '茨城県'){
-            echo $yokohama . 'の県庁所在地は、' . $popon .'です。'. "\n";
-        }else {
-            echo $yokohama . 'は関東地方ではありません。'."\n";
+    $kantou = ['東京途'=>'新宿区',
+               '横浜県'=>'横浜市',
+               '千葉県'=>'千葉市',
+               '埼玉県'=>'さいたま市',
+               '栃木県'=>'宇都宮市',
+               '群馬県'=>'前橋市',
+               '茨城県'=>'水戸市',
+               '北海道'=>'札幌市',
+               '岩手県'=>'盛岡市'
+            ];
+    $kantou_ken = ['東京途', 
+                   '横浜県',
+                   '千葉県',
+                   '埼玉県',
+                   '栃木県',
+                   '群馬県',
+                   '茨城県'
+                ];
+
+    foreach ($kantou as $prefecture => $kentyoushozaiti) {
+        if (in_array($prefecture, $kantou_ken)) {
+            echo $prefecture . 'の県庁所在地は、' . $kentyoushozaiti . 'です。' . "\n";
+        } else {
+            echo $prefecture . 'は関東地方ではありません。' . "\n";
         }
     }
 
-
     // Q10 関数-1
-    function hello ($helloname){
-    echo $helloname . '、こんちゃ';
-    }
-
-    hello('松浦先生');
-    hello('唐澤貴洋');
+    function hello ($helloName){
+        return $helloName;
+        }
+    
+    echo hello('松浦先生') . '、こんにちは'. "\n";
+    echo hello('唐澤貴洋') . '、こんにちは';
 
 
     // Q11 関数-2
-    function calcTaxinPrice ($price){
+    function calcTaxInPrice ($price){
         return $price * 1.1;
     }
-    $taxinPrice = calcTaxinPrice(1000);
-    echo '1000円の商品の税込み価格は' . $taxinPrice . '円です。';
+    $taxInPrice = calcTaxInPrice(1000);
+    echo '1000円の商品の税込み価格は' . $taxInPrice . '円です。';
 
 
     // Q12 関数とif文
-    function distinguishNum ($Q12num){
-        if ($Q12num % 2 == 0){
-            return $Q12num . 'は偶数です。';
+    function distinguishNum ($randamNum){
+        if ($randamNum % 2 == 0){
+            return $randamNum . 'は偶数です。';
         }else{
-            return $Q12num . 'は奇数です。';
+            return $randamNum . 'は奇数です。';
         }
     }
 
@@ -108,25 +136,21 @@
         switch ($grade) {
             case 'A':
             case 'B':
-                echo '合格です。'."\n";
-                break;
+                return '合格です。'."\n";
             
             case 'C':
-                echo '合格ですが追加課題があります。'."\n";
-                break;
+                return '合格ですが追加課題があります。'."\n";
                 
             case 'D':
-                echo '不合格です。'."\n";
-                break;
+                return '不合格です。'."\n";
                 
             default:
-                echo '判定不明です。講師に問い合わせてください。'."\n";
-                break;
+                return '判定不明です。講師に問い合わせてください。'."\n";
         }
     }
 
-    evaluateGrade('C');
-    evaluateGrade('Z');
+    echo evaluateGrade('C');
+    echo evaluateGrade('Z');
 
 
     ?>
